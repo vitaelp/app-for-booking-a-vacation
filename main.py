@@ -1,5 +1,7 @@
 from flask import Flask, render_template, request
 import pandas as pd
+import xlrd
+import openpyxl
 
 
 app = Flask(__name__)
@@ -38,7 +40,7 @@ def get_data():
             info.write("\n")
             info.write("-----------------------------------------------------")
 
-        return """<h1>If your information is correct click SUBMIT button and get your DREAM VACATION LOCATION </h1>"""+ "<br> First Name : " + first_name + "<br> Last Name : " + last_name + "<br> Age : " + str(age) + "<br> Number of passengers : " + str(passenger) + "<br> Number of nights : " + str(night)
+        return """<h1>If your information is correct click SUBMIT button and get your DREAM VACATION LOCATION </h1>"""+ "<br> First Name : " + first_name + "<br> Last Name : " + last_name + "<br> Age : " + str(age) + "<br> Number of passengers : " + str(passenger) + "<br> Number of nights : " + str(night) + render_template('button.html')
     else:
         return """<h1>You have to be older than 18. </h1>"""
 
@@ -49,7 +51,13 @@ def admin():
     return dictionary
 
 
+@app.route('/locationPrice', methods=['POST', 'GET'])
+def locationPrice():
+    return render_template('priceData.html')
 
+@app.route('/results', methods=['POST', 'GET'])
+def results():
+    return render_template('index.html')
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
