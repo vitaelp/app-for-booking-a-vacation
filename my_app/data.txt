@@ -1,0 +1,87 @@
+
+First Name - Last Name - Budget - Age - Nights - Passengers 
+123
+123
+22
+22
+22
+-----------------------------------------------------
+First Name - Last Name - Budget - Age - Nights - Passengers 
+123
+22
+22
+22
+22
+-----------------------------------------------------
+First Name - Last Name - Budget - Age - Nights - Passengers 
+111
+1111
+111
+1
+1
+-----------------------------------------------------
+First Name - Last Name - Budget - Age - Nights - Passengers 
+11111
+111111
+1111
+11
+11
+-----------------------------------------------------
+First Name - Last Name - Budget - Age - Nights - Passengers 
+111111111
+1111
+111
+1
+1
+-----------------------------------------------------
+First Name - Last Name - Budget - Age - Nights - Passengers 
+123
+1111
+122
+12
+12
+-----------------------------------------------------
+First Name - Last Name - Budget - Age - Nights - Passengers 
+123
+1111
+123
+3
+33
+-----------------------------------------------------
+First Name - Last Name - Budget - Age - Nights - Passengers 
+123
+1111
+123
+1
+1
+-----------------------------------------------------
+First Name - Last Name - Budget - Age - Nights - Passengers 
+123
+123
+123
+123
+-----------------------------------------------------
+First Name - Last Name - Budget - Age - Nights - Passengers 
+123
+1111
+21
+2
+-----------------------------------------------------
+First Name - Last Name - Budget - Age - Nights - Passengers 
+123
+1111
+19
+3
+-----------------------------------------------------
+First Name - Last Name - Budget - Age - Nights - Passengers 
+123
+1111
+188
+2
+-----------------------------------------------------
+First Name - Last Name - Budget - Age - Nights - Passengers 
+123
+1111
+199
+4
+-----------------------------------------------------

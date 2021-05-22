@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h1>One more step before your dream vacation location...</h1>
+<form action="" method="post">
+    <p>Pick location of your choice: mountain, safari, forest, beach:</p><br>
+    <br><br>
+    <input type="text" placeholder="Enter location" name="location" value="{{
+          request.form.location }}">
+    <br><br>
+    <input type="submit" name="sub" value="Submit"/>
+</form>
+
+<br>
+
+{% for row in results %}
+    <tr>
+        <p style="font-weight: bold">Hotel , Location, Price</p>
+        <td>{{ row['Hotel'] }},</td>
+        <td>{{ row['Location'] }},</td>
+        <td>{{ row['Price'] }}</td>
+    </tr>
+{% endfor %}
+
+<br><br>
+<form method="post" action="/main">
+    <input type="submit" name="sub" value="Go back to main Page"/>
+</form>
+
+</body>
+</html>

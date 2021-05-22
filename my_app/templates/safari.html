@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>SAFARI LOCATION HOTELS</h1>
+{% for row in results %}
+    <tr>
+        <p style="font-weight: bold">Hotel , Location, Price</p>
+        <td>{{ row['Hotel'] }},</td>
+        <td>{{ row['Location'] }},</td>
+        <td>{{ row['Price'] }}</td>
+    </tr>
+{% endfor %}
+<br><br>
+
+<form action="" method="post">
+    <p style="">Enter Hotel name that you would like to go !!! </p>
+    <input type="text" placeholder="Enter hotel name..." name="hotel" value="{{
+          request.form.hotel }}">
+    <br><br>
+    <input type="submit" name="sub" value="Submit"/>
+</form>
+
+
+
+{% for row in hotels %}
+    <tr>
+        <h1 style="color:cornflowerblue;">You picked this hotel: </h1>
+        <p style="font-weight: bold">Hotel , Location, Price per night</p>
+        <td>{{ row['Hotel'] }},</td>
+        <td>{{ row['Location'] }},</td>
+        <td>{{ row['Price'] }}</td>
+    </tr>
+<h1 style="color:cornflowerblue;">Price for your amount of nights in this hotel is:  </h1>
+{% endfor %}
+
+
+</body>
+</html>

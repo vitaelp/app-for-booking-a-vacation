@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ titel }}</title>
+</head>
+<body>
+    <h1>{{ titel }}</h1>
+    <ul>
+        {% for gast in partygaeste %}
+            <li>{{ gast }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
