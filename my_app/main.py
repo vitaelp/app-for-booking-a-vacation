@@ -1,7 +1,9 @@
 import csv
 import pandas as pd
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, request, redirect, url_for, render_template
+
 app = Flask(__name__)
+
 
 
 @app.route('/')
@@ -15,31 +17,50 @@ def main_in():
 
 @app.route('/index', methods=['POST'])
 def get_data():
+    global first_name
+    global last_name
+    global age
+    global passenger
     first_name = request.form.get("first")
     last_name = request.form.get("last")
     age = request.form.get("age", type=int)
     passenger = request.form.get("passenger", type=int)
     a = 18
 
-    if (age > a):
-        with open('data.txt', 'a')as info:
-            info.write("\n")
-            info.write("First Name - Last Name - Budget - Age - Nights - Passengers ")
-            info.write("\n")
-            info.write(first_name)
-            info.write("\n")
-            info.write(last_name)
-            info.write("\n")
-            info.write(str(age))
-            info.write("\n")
-            info.write(str(passenger))
-            info.write("\n")
-            info.write("-----------------------------------------------------")
+    if request.method == 'POST':
+        if request.form['first'] == '' or request.form['last'] == '' or request.form['age'] == '' or request.form['passenger'] == '':
+            error = 'Please enter information to continue !!'
+            return render_template('index.html', error=error)
+        if (age > a):
+            with open('data.txt','a')as info:
+                info.write("\n")
+                info.write("First Name - Last Name - Age -  Passengers ")
+                info.write("\n")
+                info.write(first_name)
+                info.write("\n")
+                info.write(last_name)
+                info.write("\n")
+                info.write(str(age))
+                info.write("\n")
+                info.write(str(passenger))
+                info.write("\n")
+                info.write("-----------------------------------------------------")
+                return "<h1>If your information is correct click SUBMIT button and get your DREAM VACATION LOCATION </h1>"+ "<br> First Name : " + first_name + "<br> Last Name : " + last_name + "<br> Age : " + str(age) + "<br> Number of passengers : " + str(passenger)  + render_template('button.html')
+        else:
+            return "<h1>You have to be older than 18. </h1>"
 
-        return "<h1>If your information is correct click SUBMIT button and get your DREAM VACATION LOCATION </h1>"+ "<br> First Name : " + first_name + "<br> Last Name : " + last_name + "<br> Age : " + str(age) + "<br> Number of passengers : " + str(passenger)  + render_template('button.html')
-    else:
-        return "<h1>You have to be older than 18. </h1>"
 
+@app.route('/locationGet5', methods=['POST','GET'])
+def get_location():
+    file = "bookDATA.csv"
+    with open(file) as csvfile:
+        results = []
+        reader = csv.DictReader(csvfile)
+        location = request.form.get("location")
+        for row in reader:
+            if location == row['Location']:
+                results.append(dict(row))
+    return render_template('priceData.html', results=results)
 
 
 @app.route('/locationGet', methods=['POST','GET'])
@@ -58,6 +79,7 @@ def get_hotel():
 @app.route('/beach', methods=['POST','GET'])
 def beach():
     file = "bookDATA.csv"
+
     with open(file) as csvfile:
         results = []
         reader = csv.DictReader(csvfile)
@@ -73,9 +95,9 @@ def beach():
         reader = csv.DictReader(csvfile1)
         for row in reader:
             if hotel == row['Hotel']:
-                hotels.append(dict(row))
+                results.append(dict(row))
 
-    return render_template('beach.html', results = results, hotels = hotels)
+    return render_template('beach.html', results=results, hotels = hotels)
 
 @app.route('/safari', methods=['POST','GET'])
 def safari():
@@ -109,7 +131,17 @@ def forest():
         for row in reader:
             if location == row['Location']:
                 results.append(dict(row))
-    return render_template('forest.html', results=results)
+
+    file1 = "bookDATA.csv"
+    with open(file1) as csvfile1:
+        hotel = request.form.get("hotel")
+        hotels = []
+        reader1 = csv.DictReader(csvfile1)
+        for row in reader1:
+            if hotel == row['Hotel']:
+                hotels.append(dict(row))
+
+    return render_template('forest.html', results = results,  hotels=hotels)
 
 @app.route('/mountain', methods=['POST','GET'])
 def mountain():
@@ -121,7 +153,17 @@ def mountain():
         for row in reader:
             if location == row['Location']:
                 results.append(dict(row))
-    return render_template('mountain.html', results=results)
+
+    file1 = "bookDATA.csv"
+    with open(file1) as csvfile1:
+        hotel = request.form.get("hotel")
+        hotels = []
+        reader1 = csv.DictReader(csvfile1)
+        for row in reader1:
+            if hotel == row['Hotel']:
+                hotels.append(dict(row))
+
+    return render_template('mountain.html', results=results, hotels=hotels)
 
 #login part
 @app.route('/login', methods=['POST', 'GET'])
@@ -132,7 +174,7 @@ def login():
             error = 'Invalid username or password. Please try again.'
         else:
             return redirect(url_for('admin'))
-    return render_template('login.html', error=error) + "<br>" + render_template("admin_back.html")
+    return render_template('login.html', error=error) + "<br>"
 
 #admin part when you log in
 @app.route('/admin', methods=['POST', 'GET'])
@@ -140,7 +182,53 @@ def admin():
     a = pd.read_csv("bookDATA.csv")
     a.to_html()
     html_file = a.to_html()
-    return "<h1>THIS IS OUR DATA</h1>" + html_file + render_template("admin_back.html")
+    if request.method == 'POST':
+        with open('bookDATA.csv', 'a') as file:
+            hotel = request.form.get("hotel")
+            location = request.form.get("location")
+            price = request.form.get("price", type=int)
+            writer = csv.writer(file)
+            writer.writerow([hotel, location, price])
+
+    #loading text file for admin
+    b = pd.read_csv("data.txt")
+    b.to_html()
+    html_file2 = b.to_html()
+
+    c = pd.read_csv("dataBooking.txt")
+    c.to_html()
+    html_file3 = c.to_html()
+
+    return  render_template("admin.html") + "<h1>THIS IS OUR DATA</h1>" + html_file + "<br><h1>ALL USERS</h1>" + html_file2 + "<br><h1>USERS THAT BOOKED </h1>" + html_file3 + render_template("admin_back.html")
+
+
+@app.route('/book', methods=['POST', 'GET'])
+def book():
+    global first_name
+    global last_name
+    global age
+    global passenger
+    firstName = first_name
+    lastName = last_name
+    age_age = age
+    passengerr = passenger
+
+    with open('dataBooking.txt', 'a')as info:
+        info.write("\n")
+        info.write("First Name - Last Name - Age - Passengers ")
+        info.write("\n")
+        info.write(firstName)
+        info.write("\n")
+        info.write(lastName)
+        info.write("\n")
+        info.write(str(age_age))
+        info.write("\n")
+        info.write(str(passengerr))
+        info.write("\n")
+        info.write("-----------------------------------------------------")
+
+    return render_template('book.html', firstName=firstName, lastName=lastName)
+
 
 
 if __name__ == '__main__':

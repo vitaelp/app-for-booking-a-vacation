@@ -85,3 +85,27 @@ First Name - Last Name - Budget - Age - Nights - Passengers
 199
 4
 -----------------------------------------------------
+First Name - Last Name - Budget - Age - Nights - Passengers 
+123
+123
+19
+2
+-----------------------------------------------------
+First Name - Last Name - Budget - Age - Nights - Passengers 
+123
+123
+123
+123
+-----------------------------------------------------
+First Name - Last Name - Budget - Age - Nights - Passengers 
+123
+1111
+19
+2
+-----------------------------------------------------
+First Name - Last Name - Budget - Age - Nights - Passengers 
+123
+1111
+19
+2
+-----------------------------------------------------

@@ -4,6 +4,23 @@
     <meta charset="UTF-8">
     <title>Home</title>
 
+    <style>
+        .button{
+            background-color: hotpink;
+            color: black;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+
+}
+    .button:hover{
+        background-color: deeppink;
+}
+    </style>
+
+
      <header>
         <div>
             <h1>DREAM VACATION</h1>
@@ -19,8 +36,12 @@
     <input type="number" name="age" placeholder="Age"/><br><br>
     <input type="number" name="passenger" placeholder="Number of passengers "/><br><br>
     <br><br>
-    <input type="submit" name="sub" value="Submit"/>
+    <input style="color:black" class="button" type="submit" name="sub" value="Submit"/>
 </form>
+
+{% if error %}
+        <p style="color:red" class="error"><strong>Error:</strong> {{ error }}
+      {% endif %}
 
 </body>
 </html>

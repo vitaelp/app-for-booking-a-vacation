@@ -3,11 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+#myButton{
+  color: palevioletred;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+#myButton:hover {
+    cursor: pointer;
+    color: navy;
+}
+</style>
+
 </head>
 <body>
 
-<form method="post" action="/main">
-    <input type="submit" name="sub" value="Go back to main Page"/>
+
+<form id="myButton" method="post" action="/main">
+    <input id ="myButton" type="submit" name="sub" value="Go back to main Page"/>
 </form>
 
 </body>

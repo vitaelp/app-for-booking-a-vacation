@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            background-color: #fce5ff;
+        }
+
+#h1book{
+   text-align: center;
+    color: orangered;
+}
+#h1name{
+    text-align: center;
+    color: black;
+}
+.button{
+  background-color: hotpink;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+.button:hover{
+    background-color: deeppink;
+}
+
+
+</style>
+
+</head>
+<body>
+<h1 id="h1book">THANK YOU FOR BOOKING YOUR LOCATION </h1>
+<h1 id="h1name">{{ firstName }} {{ lastName }}</h1>
+
+<br><br>
+<form method="post" action="/main">
+    <input class="button" type="submit" name="sub" value="Go to Main page"/>
+</form>
+
+</body>
+</html>

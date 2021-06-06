@@ -3,10 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+
+    <style>
+        body{
+            background-color:#fce5ff;
+        }
+div.gallery {
+  margin: 5px;
+  border: 1px solid #ccc;
+  float: left;
+  width: 800px;
+}
+
+div.gallery:hover {
+  border: 1px solid ;
+    border-color: hotpink;
+}
+
+div.gallery img {
+  width: 800px;
+  height : 600px;
+}
+
+#locati{
+    text-align: center;
+    font-size: 70px;
+}
+#location{
+    font-size: 50px;
+    color:cornflowerblue;
+}
+
+</style>
+
+
 </head>
 <body>
 
-<form action="" method="post">
+<form id="locati"action="" method="post">
     <label for="location">Choose a location:</label>
     <select id="location" name="location">
     <option value="safari">SAFARI</option>
@@ -16,5 +50,29 @@
     </select>
     <input type="submit" value="Submit">
 </form>
+
+<br><br>
+<h1 style="text-align: center;"> SOME OF OUR LOCATIONS</h1>
+
+<div class="gallery">
+    <img src="{{url_for('static', filename='dubrovnik.png')}}" width="800" height="600">
+  <div style="font-weight: bold">Picture from - https://en.escapio.com/beach-hotels/dubrovnik  BEACH LOCATION</div>
+</div>
+
+<div class="gallery">
+    <img src="{{url_for('static', filename='forest1.jpg')}}" width="800" height="600">
+  <div style="font-weight: bold">Picture from - https://www.housebeautiful.com/lifestyle/g25781535/nature-travel-hotels/  FOREST LOCATION</div>
+</div>
+
+<div class="gallery">
+    <img src="{{url_for('static', filename='safari.png')}}" width="800" height="600">
+  <div style="font-weight: bold">Picture from - https://www.kiwicollection.com/best-hotels/safari-hotels SAFARI LOCATION</div>
+</div>
+
+<div class="gallery">
+    <img src="{{url_for('static', filename='mountain.png')}}" width="800" height="600">
+  <div style="font-weight: bold">Picture from - https://www.touropia.com/amazing-hotels-in-switzerland/ MOUNTAIN LOCATION</div>
+</div>
+
 </body>
 </html>

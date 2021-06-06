@@ -13,11 +13,12 @@
         <td>{{ row['Location'] }},</td>
         <td>{{ row['Price'] }}</td>
     </tr>
+    <p>------------------------------------------</p>
 {% endfor %}
 <br><br>
 
 <form action="" method="post">
-    <p style="">Enter Hotel name that you would like to go !!! </p>
+    <p style="font-weight: bold">Enter Hotel name that you would like to go !!! </p>
     <input type="text" placeholder="Enter hotel name..." name="hotel" value="{{
           request.form.hotel }}">
     <br><br>
@@ -28,15 +29,17 @@
 
 {% for row in hotels %}
     <tr>
-        <h1 style="color:cornflowerblue;">You picked this hotel: </h1>
-        <p style="font-weight: bold">Hotel , Location, Price per night</p>
+        <h1 style="color:cornflowerblue;">SAFARI HOTEL YOU PICKED </h1>
         <td>{{ row['Hotel'] }},</td>
         <td>{{ row['Location'] }},</td>
-        <td>{{ row['Price'] }}</td>
+        <td>{{ row['Price']}}</td>
     </tr>
-<h1 style="color:cornflowerblue;">Price for your amount of nights in this hotel is:  </h1>
 {% endfor %}
 
+<br>
+<form method="post" action="/book">
+    <input type="submit" name="sub" value="BOOK LOCATION"/>
+</form>
 
 </body>
 </html>
