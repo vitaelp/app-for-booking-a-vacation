@@ -25,7 +25,7 @@ def get_data():
     last_name = request.form.get("last")
     age = request.form.get("age", type=int)
     passenger = request.form.get("passenger", type=int)
-    a = 18
+    a = 17
 
     if request.method == 'POST':
         if request.form['first'] == '' or request.form['last'] == '' or request.form['age'] == '' or request.form['passenger'] == '':
@@ -79,7 +79,6 @@ def get_hotel():
 @app.route('/beach', methods=['POST','GET'])
 def beach():
     file = "bookDATA.csv"
-
     with open(file) as csvfile:
         results = []
         reader = csv.DictReader(csvfile)
@@ -92,12 +91,12 @@ def beach():
     with open(file1) as csvfile1:
         hotel = request.form.get("hotel")
         hotels = []
-        reader = csv.DictReader(csvfile1)
-        for row in reader:
+        reader1 = csv.DictReader(csvfile1)
+        for row in reader1:
             if hotel == row['Hotel']:
-                results.append(dict(row))
+                hotels.append(dict(row))
 
-    return render_template('beach.html', results=results, hotels = hotels)
+    return render_template('beach.html', results=results, hotels=hotels)
 
 @app.route('/safari', methods=['POST','GET'])
 def safari():
